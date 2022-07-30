@@ -1,34 +1,80 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# [rupeshbudhathoki.com.np](https:-www.rupeshbudhathoki.com.np)
 
-## Getting Started
 
-First, run the development server:
+## Project Structure
 
-```bash
-npm run dev
-# or
-yarn dev
+```
+src
+├── components
+│   ├── cards
+│   │   └── form/FormCard.tsx
+│   ├── layouts
+│   ├── navigation
+│   │   ├── header/Header.tsx
+│   │   └── footer/Footer.tsx
+│   ├── templates
+│   └── utility
+│       └── search/SearchInput.tsx
+├── hooks                         # user defined hooks
+│   └── useOnScreen.tsx
+├── pages
+│   ├── api
+│   ├── index.tsx
+│   ├── about.tsx
+│   └── blogs
+│       ├── index.tsx
+│       └── [id].tsx
+├── state                         # global state
+│   └── auth/AuthContext.tsx
+├── styles
+│   └── globals.css
+└── utils
+    └── getEmailByUsername.ts
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Husky
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- Commit will only work if `yarn lint` and CommitLint yield success
+- Push  will only work if `yarn build` yield success
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## CommitLint 
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Commit with following prefixes according to fit
 
-## Learn More
+- build: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
+- ci: Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)
+- docs: Documentation only changes
+- feat: A new feature
+- fix: A bug fix
+- perf: A code change that improves performance
+- refactor: A code change that neither fixes a bug nor adds a feature
+- style: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+- test: Adding missing tests or correcting existing tests
 
-To learn more about Next.js, take a look at the following resources:
+## Components
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Group Similar components in a justifiable folder.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- utility : Something with business logic like Search Component etc.
+- card : Card Looking components
+- layouts : Wrapper for pages
+- templates : Blog Template etc.
+- navigation : header and footer 
 
-## Deploy on Vercel
+Declaring a base template:  
+`components/templates/base/BaseTemplate.tsx`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```tsx
+// Have interface for every components even if empty and export them
+// Follow IComponentName naming convention
+export interface IBaseTemplate {
+  sampleTextProp: string;
+}
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+const BaseTemplate: React.FC<IBaseTemplate> = ({ sampleTextProp }) => {
+  return <div>{sampleTextProp}</div>;
+};
+
+export default BaseTemplate;
+```
+
