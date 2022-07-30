@@ -1,3 +1,40 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Fonts */
+body {
+  font-family: 'Satoshi', sans-serif;
+}
+
+.display {
+  @apply font-medium text-[150px] leading-[1.2];
+}
+
+h1 {
+  @apply font-medium text-[91px] leading-[1.2];
+}
+
+h2 {
+  @apply font-medium text-6xl leading-[1.2];
+}
+
+h3 {
+  @apply font-medium text-[40px] leading-[1.2];
+}
+
+h4 {
+  @apply font-medium text-[27px] leading-[1.4];
+}
+
+p.large {
+  @apply font-medium text-[27px] leading-[1.4];
+}
+
+p.medium {
+  @apply font-medium text-[18px] leading-[1.6];
+}
+
+p.small {
+  @apply font-medium text-sm leading-[1.6];
+}
